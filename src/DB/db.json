@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "title": "Hello World !",
+      "body": "lorem ipsum...",
+      "done": false,
+      "id": 1
+    },
+    {
+      "title": "Best laptop",
+      "body": "lorem ipsum...",
+      "done": false,
+      "id": 2
+    },
+    {
+      "title": "Gaming room",
+      "body": "lorem ipsum...",
+      "done": true,
+      "id": 3
+    }
+  ]
+}
