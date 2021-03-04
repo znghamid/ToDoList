@@ -11,13 +11,28 @@ $light-gray: #f5f5f5;
 
 $box-shadow: rgba(0, 0, 0, .05);
 
+@mixin NotSelect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
 body {
   box-sizing: border-box;
   background: $light-gray;
 }
 
 * {
-  font-family: Quicksand;
+  font-family: Quicksand !important;
 }
 
 h1,
@@ -28,17 +43,41 @@ h5,
 h6,
 p {
   color: $dark;
-  margin: 0;
+}
+
+button.btn:focus,
+button.btn:active,
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+.form-control:focus,
+input:focus {
+  box-shadow: inset 0 0px 0 #ddd !important;
 }
 
 .wrapper {
-  margin: 50px auto;
-  padding: 25px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin: 30px auto;
   max-width: 400px;
-  min-height: 500px;
+  height: 605px;
+  overflow-y: auto;
+  overflow-x: unset;
   background: $white;
   border-radius: 3px;
   box-shadow: 0 10px 15px $box-shadow;
+  border: 25px #fff solid;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  header {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0px;
+  }
 
   header nav {
     border-radius: 3px;
@@ -47,8 +86,10 @@ p {
     align-items: center;
 
     h2 {
+      @include NotSelect();
       color: $green;
       font-size: 24px;
+      font-weight: 700;
       margin: 20px auto 20px 20px;
     }
 
@@ -60,23 +101,133 @@ p {
   }
 }
 
+article p {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: $dark;
+  text-align: justify;
+}
+
+h4 {
+  text-align: center;
+  font-size: 18px !important;
+  font-weight: 300;
+  color: $dark-gray;
+
+  span {
+    padding-left: 10px;
+  }
+}
+
+.create-todo {
+
+  input,
+  textarea {
+    color: $dark;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border-radius: 3px;
+    border: solid 1px $gray;
+    margin-top: 20px;
+
+    &:focus {
+      outline: unset;
+      border: $blue solid 1px;
+    }
+  }
+
+  input[type=submit] {
+    color: $white;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all .3s;
+    cursor: pointer;
+    background: $green;
+    border: none;
+
+    &:hover {
+      box-shadow: 0 5px 10px rgba($color: $green, $alpha: .4);
+    }
+
+    &:focus {
+      outline: unset;
+    }
+  }
+}
+
+.disabled {
+  pointer-events: none;
+}
+
 .todo-list {
   margin-top: 20px;
+
   .todo {
     padding: 20px;
     text-decoration: none;
     margin: 20px 0;
     display: block;
     border: dashed 2px $gray;
+    border-radius: 3px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+
+    button,
+    a {
+      font-size: 15px;
+      background: transparent;
+      border: none;
+      padding: 0 10px;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .edit-button {
+      color: $green;
+    }
+
+    .trash-button {
+      color: $red;
+    }
+
+    .show-button {
+      color: $blue;
+    }
   }
 
   h3 {
+    cursor: pointer;
+    @include NotSelect();
     font-size: 22px;
+    font-weight: 600;
+    margin-right: auto;
+    text-decoration: none;
+  }
+
+  h3.done {
+    color: $dark-gray;
+    text-decoration: line-through;
   }
 
   p {
+    @include NotSelect();
     margin-top: 10px;
+    margin-bottom: 0 !important;
     font-size: 16px;
+  }
+
+  p.done {
+    color: $dark-gray;
+    text-decoration: line-through;
   }
 }
 

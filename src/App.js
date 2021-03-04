@@ -20,9 +20,6 @@ const App = () => {
           </Switch>
         </Router>
       </div>
-      <footer>
-        <p>Written By ZNGHamid</p>
-      </footer>
     </>
   );
 }

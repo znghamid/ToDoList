@@ -2,7 +2,7 @@ import { faHome, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
 
-const Header = ( { title, url, icon } ) => {
+const Header = ( { title, url, icon} ) => {
 
   if(icon === 'home'){
     icon = faHome;
